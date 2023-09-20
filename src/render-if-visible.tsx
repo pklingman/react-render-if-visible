@@ -91,8 +91,7 @@ const RenderIfVisible = ({
   )
 
   return React.createElement(rootElement, {
-    children:
-      isVisible || (stayRendered && wasVisible.current) ? (
+    children: isVisible || (stayRendered && wasVisible.current) ? (
         <>{children}</>
       ) : (
         React.createElement(placeholderElement, {
