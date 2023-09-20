@@ -72,7 +72,7 @@ const RenderIfVisible = ({
       }
     }
     return () => {}
-  }, [])
+  }, [root, visibleOffset])
 
   useEffect(() => {
     if (isVisible) {
@@ -91,14 +91,15 @@ const RenderIfVisible = ({
   )
 
   return React.createElement(rootElement, {
-    children: isVisible || (stayRendered && wasVisible.current) ? (
-      <>{children}</>
-    ) : (
-      React.createElement(placeholderElement, {
-        className: placeholderClasses,
-        style: placeholderStyle,
-      })
-    ),
+    children:
+      isVisible || (stayRendered && wasVisible.current) ? (
+        <>{children}</>
+      ) : (
+        React.createElement(placeholderElement, {
+          className: placeholderClasses,
+          style: placeholderStyle,
+        })
+      ),
     ref: intersectionRef,
     className: rootClasses,
   })
